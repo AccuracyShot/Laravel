@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Episode extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     public function season()
     {
-        return $this->belongsTo(Season::class); //Um episódio pertence a uma temporada
+        return $this->belongsTo(Season::class);
     }
 }
