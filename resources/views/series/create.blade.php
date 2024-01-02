@@ -15,19 +15,19 @@
             </div>
             <div class="col-2">
                 <label for="seasonsQty" class="form-label">Nº Temporadas:</label>
-                <input type="text"
-                    id="nome"
-                    name="nome"
+                <input type="number"
+                    id="seasonsQty"
+                    name="seasonsQty"
                     class="form-control"
-                    value="{{ old('nome') }}">
+                    value="{{ old('seasonsQty') }}">
             </div>
             <div class="col-2">
                 <label for="episodesPerSeason" class="form-label">Nº Episódios:</label>
-                <input type="text"
-                    id="nome"
-                    name="nome"
+                <input type="number"
+                    id="episodesPerSeason"
+                    name="episodesPerSeason"
                     class="form-control"
-                    value="{{ old('nome') }}">
+                    value="{{ old('episodesPerSeason') }}">
             </div>
         </div>
     
