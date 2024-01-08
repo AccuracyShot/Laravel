@@ -5,9 +5,11 @@ namespace App\Repositories;
 use App\Models\{Episode, Season, Series};
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SeriesFormRequest;
+use App\Repositories\ISeriesRepository;
 
 //Uma classe de repositorio é uma classe responsável por fazer a comunicação com o banco de dados
-class SeriesRepository {
+class EloquentSeriesRepository implements ISeriesRepository 
+{
     public function add(SeriesFormRequest $request): Series 
     {
         return DB::transaction(function () use ($request) {

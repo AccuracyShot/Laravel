@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
-use App\Repositories\SeriesRepository;
+use App\Repositories\EloquentSeriesRepository;
 use Illuminate\Http\Request;
+use App\Repositories\ISeriesRepository;
 
 class SeriesController extends Controller
 {
+    public function __construct(private ISeriesRepository $repository)
+    {     
+    }
+
     public function index(Request $request)
     {
         $series = Series::all();
@@ -23,7 +28,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request, SeriesRepository $repository)
+    public function store(SeriesFormRequest $request, EloquentSeriesRepository $repository)
     {
         $series = $repository->add($request);
 
