@@ -13,9 +13,9 @@
     <h1>{{ $title }}</h1>
 
     @isset($mensagemSucesso)
-    <div class="alert alert-success">
-        {{ $mensagemSucesso }}
-    </div>
+        <div class="alert alert-success">
+            {{ $mensagemSucesso }}
+        </div>
     @endisset
 
     @if ($errors->any())
