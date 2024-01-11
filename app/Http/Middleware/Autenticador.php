@@ -19,9 +19,9 @@ class Autenticador
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()) {
-           throw new AuthenticationException();
+            throw new AuthenticationException();
         }
-        
+
         return $next($request);
     }
 }

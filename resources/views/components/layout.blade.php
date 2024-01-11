@@ -7,27 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }} - Controle de Séries</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
+
+        @auth
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button class="btn btn-link">
+                Sair
+            </button>
+        </form>
+        @endauth
+
+        @guest
+        <a href="{{ route('login') }}">Entrar</a>
+        @endguest
+    </div>
+</nav>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
-            <form class="d-flex form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            @auth
-                <a class="btn btn-dark" href="{{ route('logout') }}">Sair</a>
-            @endauth
-
-            @guest
-                <a class="btn btn-dark" href="{{ route('login') }}">Entrar</a>
-            @endguest
-           
-        </div>
-      </nav>
-
     <h1>{{ $title }}</h1>
 
     @isset($mensagemSucesso)
