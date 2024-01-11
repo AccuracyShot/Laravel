@@ -10,6 +10,17 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
+            <form class="d-flex form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <a class="btn btn-dark" href="{{ route('logout') }}">Sair</a>
+        </div>
+      </nav>
+
     <h1>{{ $title }}</h1>
 
     @isset($mensagemSucesso)
