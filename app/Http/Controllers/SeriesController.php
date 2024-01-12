@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Mail\SeriesCreated;
 use App\Models\Series;
 use App\Models\User;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SeriesCreated;
 
 class SeriesController extends Controller
 {
@@ -34,14 +35,14 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = $this->repository->add($request);
-        
+
         $userList = User::all();
         foreach ($userList as $user) {
             $email = new SeriesCreated(
                 $serie->nome,
                 $serie->id,
-                $serie->seasonsQty,
-                $serie->episodesPerSeason,
+                $request->seasonsQty,
+                $request->episodesPerSeason,
             );
             Mail::to($user)->send($email);
             sleep(2);

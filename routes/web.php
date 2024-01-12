@@ -22,10 +22,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/email', function () {
-    return new App\Mail\SeriesCreated(
-        'Nome da série',
-        1,
-        3,
+    return new \App\Mail\SeriesCreated(
+        'Série de teste',
+        19,
+        5,
         10,
     );
 });
