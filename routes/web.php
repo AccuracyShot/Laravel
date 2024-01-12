@@ -21,4 +21,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/email', function () {
+    return new App\Mail\SeriesCreated(
+        'Nome da série',
+        1,
+        3,
+        10,
+    );
+});
+
 require __DIR__ . '/auth.php';
