@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Events\SeriesCreated as SeriesCreatedEvent;
 use App\Mail\SeriesCreated;
 use App\Models\User;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
-use App\Events\SeriesCreated  as SeriesCreatedEvent;
 
 class EmailUsersAboutSeriesCreated implements ShouldQueue
 {
@@ -35,9 +35,9 @@ class EmailUsersAboutSeriesCreated implements ShouldQueue
                 $event->seriesName,
                 $event->seriesId,
                 $event->seriesSeasonsQty,
-                $event->seriesEpisodePerSeason,
+                $event->seriesEpisodesPerSeason,
             );
-            $when = now()->addSecond($index * 5);
+            $when = now()->addSeconds($index * 5);
             Mail::to($user)->later($when, $email);
         }
     }

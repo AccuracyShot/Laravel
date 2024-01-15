@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Events\SeriesCreated as SeriesCreatedEvent;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
-use App\Events\SeriesCreated as SeriesCreatedEvent;
 
 class SeriesController extends Controller
 {
@@ -36,7 +36,7 @@ class SeriesController extends Controller
             $serie->nome,
             $serie->id,
             $request->seasonsQty,
-            $request->episodesPerSeason
+            $request->episodesPerSeason,
         );
 
         return to_route('series.index')

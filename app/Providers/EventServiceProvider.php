@@ -22,8 +22,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         SeriesCreated::class => [
+            EmailUsersAboutSeriesCreated::class,
             LogSeriesCreated::class,
-            EmailUsersAboutSeriesCreated::class,    
         ],
     ];
 
