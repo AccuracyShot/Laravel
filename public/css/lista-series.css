@@ -1,78 +1,73 @@
-ul.list-group {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.series-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0;
+  list-style: none;
 }
 
-  /* Item da lista */
-  ul.list-group li {
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: calc(50% - 20px); /* Ajuste o espaçamento conforme necessário */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  ul.list-group li:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Imagem da série */
-  ul.list-group li img {
-    min-width: 300px; /* Ajuste conforme necessário */
-    height: 200px; /* Ajuste conforme necessário */
-    border-radius: 10px;
-    object-fit: cover;
-    margin-right: 20px;
-  }
-  
-  /* Título da série */
-  ul.list-group li a {
-    font-size: 25px;
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  ul.list-group li:hover a {
-    color: #007bff; /* Cor de destaque */
-  }
-  
-  /* Botões de ação */
-  ul.list-group li span {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
-  
-  ul.list-group li a.btn-primary {
-    background-color: #007bff;
-    background-image: url("/img/pencil-edit.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #fff;
-    border: none;
-    padding: 25px 25px;
-    border-radius: 5px;
-    font-size: 16px;
-    text-decoration: none;
-  }
-  
-  ul.list-group li button.btn-danger {
-    background-color: #dc3545;
-    background-image: url("/img/trash-remove.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #fff;
-    border: none;
-    padding: 25px 25px;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+.series-item {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.series-content {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.series-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.series-link {
+  text-decoration: none;
+  color: black;
+}
+
+.series-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.series-actions {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 20px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  background-image: url('/img/pencil-edit.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  background-image: url('/img/trash-remove.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.btn-edit:hover {
+  background-color: #0069d9;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
