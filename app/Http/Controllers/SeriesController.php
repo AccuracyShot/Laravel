@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Events\SeriesCreated as SeriesCreatedEvent;
+use App\Mail\SeriesCreated;
 use App\Models\Series;
+use App\Events\SeriesCreated as SeriesCreatedEvent;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,10 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        $coverPath = $request->hasFile('cover') ? $request->file('cover')->store('series_covers', 'public'): null;
-        $request->merge(['coverPath' => $coverPath]);
+        $coverPath = $request->hasFile('cover')
+            ? $request->file('cover')->store('series_cover', 'public')
+            : null;
+            $request->merge(['coverPath' => $coverPath]);
         $serie = $this->repository->add($request);
         SeriesCreatedEvent::dispatch(
             $serie->nome,
