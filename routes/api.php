@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SeriesControllerApi; 
+use App\Http\Controllers\Api\SeasonsControllerApi;
+use App\Http\Controllers\Api\EpisodesControllerApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/series', SeriesControllerApi::class);
+Route::get('/series/{series}/seasons', [SeasonsControllerApi::class, 'seasons']);
+Route::get('/series/{series}/episodes', [EpisodesControllerApi::class, 'episodes']);
+Route::patch('/episodes/{episode}', [EpisodesControllerApi::class, 'watched']);

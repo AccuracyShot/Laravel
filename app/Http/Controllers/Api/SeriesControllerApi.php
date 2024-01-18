@@ -31,9 +31,13 @@ class SeriesControllerApi extends Controller
         return response()->json($this->seriesRepository->add($request), 201);
     }
 
-    public function show(Series $series)
+    public function show(int $series)
     {
-        return $series;
+        $seriesModel = Series::find($series);
+        if ($seriesModel === null) {
+            return response()->json(['message' => 'Série não encontrada'], 404);
+        }
+        return $seriesModel;
     }
 
     public function update(SeriesFormRequest $request, Series $series)
