@@ -14,19 +14,15 @@ class LoginControllerApi extends Controller {
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
-        //dd($credentials);
+
         if (Auth::attempt($credentials) === false) {
             return response()->json('Login inválido', 401);         
         }
 
         $user = Auth::user();
+        //$user->tokens()->delete();
         if ($user instanceof User) {
-            $token = $user->createToken('token');
-            //dd($user);
-
-            return response()->json([
-                'token' => $token->plainTextToken
-            ]);
+            $token = $user->createToken('token', ['series:delete']);
         }
 
         return response()->json('Usuário inválido', 401);

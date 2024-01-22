@@ -60,7 +60,7 @@ class SeriesControllerApi extends Controller
     public function destroy(int $series)
     {
         Series::destroy($series);
-        return response()->noContent();
+        return response()->json(['message' => 'Série deletada com sucesso.'], 204);
     }
 
     // public function update(SeriesFormRequest $request, Series $series)

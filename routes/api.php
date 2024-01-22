@@ -18,14 +18,20 @@ use App\Http\Controllers\Api\LoginControllerApi;
 |
 */
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/series', SeriesControllerApi::class);
-Route::get('/series/{series}/seasons', [SeasonsControllerApi::class, 'seasons']);
-Route::get('/series/{series}/episodes', [EpisodesControllerApi::class, 'episodes']);
-Route::patch('/episodes/{episode}', [EpisodesControllerApi::class, 'watched']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::apiResource('/series', SeriesControllerApi::class);
+    Route::get('/series/{series}/seasons', [SeasonsControllerApi::class, 'seasons']);
+    Route::get('/series/{series}/episodes', [EpisodesControllerApi::class, 'episodes']);
+    Route::patch('/episodes/{episode}', [EpisodesControllerApi::class, 'watched']);
+});
 
 Route::post('/login', [LoginControllerApi::class, 'login']);
+
+
 
