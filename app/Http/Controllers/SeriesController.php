@@ -6,6 +6,7 @@ use App\Http\Requests\SeriesFormRequest;
 use App\Mail\SeriesCreated;
 use App\Models\Series;
 use App\Events\SeriesCreated as SeriesCreatedEvent;
+use App\Events\SeriesDeletedEvent;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,9 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $coverPath = $request->hasFile('cover')
-            ? $request->file('cover')->store('series_cover', 'public')
-            : null;
-            $request->merge(['coverPath' => $coverPath]);
+        ? $request->file('cover')->store('series_cover', 'public')
+        : null;
+        $request->request->add(['coverPath' => $coverPath]);
         $serie = $this->repository->add($request);
         SeriesCreatedEvent::dispatch(
             $serie->nome,
@@ -52,6 +53,8 @@ class SeriesController extends Controller
     {
         $series->delete();
 
+        SeriesDeletedEvent::dispatch($series);
+
         return to_route('series.index')
             ->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
     }
@@ -67,7 +70,7 @@ class SeriesController extends Controller
 
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
-            $coverPath = $cover->store('series_covers', 'public');
+            $coverPath = $cover->store('series_cover', 'public');
             $data['cover'] = $coverPath;
         }
 
