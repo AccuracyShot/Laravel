@@ -63,7 +63,15 @@ class SeriesController extends Controller
 
     public function update(Series $series, SeriesFormRequest $request)
     {
-        $series->fill($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $coverPath = $cover->store('series_covers', 'public');
+            $data['cover'] = $coverPath;
+        }
+
+        $series->fill($data);
         $series->save();
 
         return to_route('series.index')
