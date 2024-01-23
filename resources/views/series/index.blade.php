@@ -7,7 +7,7 @@
         <div class="border rounded-lg p-4 shadow">
             <li class="series-content">
                 <img src="{{ asset('storage/' . $serie->cover) }}"
-                class="series-thumbnail w-full h-64 object-cover object-center" 
+                class="series-thumbnail w-full h-64 object-cover object-center rounded-md" 
                 alt="Thumbnail da capa">
                 @auth <a href="{{ route('seasons.index', $serie->id) }}" class="series-link text-blue-500 hover:text-blue-700"> @endauth
                     <h2 class="series-title text-2xl mt-2">{{ $serie->nome }}</h2>
