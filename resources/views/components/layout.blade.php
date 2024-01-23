@@ -8,8 +8,9 @@
     <title>{{ $title }} - Controle de Séries</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/lista-series.css') }}"> --}}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body class="font-sans antialiased bg-gray-100 min-h-screen">
     <nav class="p-6 bg-white flex justify-between mb-6">
