@@ -14,13 +14,11 @@
     <script src="{{ asset('js/darkmode.js') }}" defer></script>
 
 </head>
-<body class="dark:bg-gray-800 dark:text-white font-sans antialiased bg-gray-100 min-h-screen">
+<body class=" font-sans antialiased bg-gray-100 min-h-screen">
     <nav class="p-6 bg-white flex justify-between mb-6">
         <div>
             <a href="{{ route('series.index') }}" class="text-lg font-bold text-gray-800">Home</a>
         </div>
-
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     
         <div>
             @auth
